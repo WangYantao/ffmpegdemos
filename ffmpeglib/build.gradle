@@ -16,7 +16,7 @@ android {
             cmake{
                 arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_TOOLCHAIN=clang"
                 cFlags "-D__STDC_FORMAT_MACROS"
-                cppFlags "-fexceptions", "-frtti"
+                cppFlags "-std=c++11"
             }
         }
     }

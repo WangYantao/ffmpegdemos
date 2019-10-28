@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.demo.ffmpeglib.FFmpegKit;
+import com.demo.oboelib.OboeKit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,8 +15,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FFmpegKit fFmpegKit = new FFmpegKit();
+        OboeKit oboeKit = new OboeKit();
 
-        TextView txvName = findViewById(R.id.txvName);
-        txvName.setText(fFmpegKit.getFFmpegName());
+        TextView txvOboe = findViewById(R.id.txvOboe);
+        txvOboe.setText("oboe-info:" + oboeKit.getOboeName());
+
+        TextView txvFFmpeg = findViewById(R.id.txvFFmpeg);
+        txvFFmpeg.setText("ffmpeg-info:" + fFmpegKit.getFFmpegName());
     }
 }
