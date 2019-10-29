@@ -10,11 +10,9 @@
     <TextView
         android:id="@+id/txvOboe"
         android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-
-    <TextView
-        android:id="@+id/txvFFmpeg"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:text="随意点击播放音效"/>
 
 </LinearLayout>

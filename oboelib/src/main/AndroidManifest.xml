@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.demo.oboelib" />
+    package="com.demo.oboelib" >
+    <uses-feature android:name="android.hardware.audio.output" android:required="true" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+</manifest>
