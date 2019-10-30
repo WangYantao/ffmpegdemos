@@ -9,7 +9,10 @@ public class OboeKit {
     }
 
     public native String getOboeName();
-    public native void touchEvent(int action);
+
     public native void startEngine();
     public native void stopEngine();
+    public native void setRecording(boolean isRecording);
+    public native void setPlaying(boolean isPlaying);
+    public native void setLooping(boolean isOn);
 }

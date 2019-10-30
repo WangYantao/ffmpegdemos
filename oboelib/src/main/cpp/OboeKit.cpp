@@ -3,45 +3,48 @@
 //
 #include <string>
 #include <jni.h>
-#include <android/input.h>
+#include <android/log.h>
 #include "AudioEngine.h"
 
-static AudioEngine *audioEngine = new AudioEngine();
+static AudioEngine audioEngine;
 
 extern "C" {
 }
 
-jstring getOboeName(JNIEnv *env, jobject obj){
+jstring getOboeName(JNIEnv *env, jobject instance){
     return env->NewStringUTF("wangyt");
 }
 
-void touchEvent(JNIEnv *env, jobject obj, jint action){
-    switch (action){
-        case AMOTION_EVENT_ACTION_DOWN:
-            audioEngine->setToneOn(true);
-            break;
-        case AMOTION_EVENT_ACTION_UP:
-            audioEngine->setToneOn(false);
-            break;
-        default:
-            break;
-    }
+void startEngine(JNIEnv *env, jobject instance){
+    audioEngine.start();
 }
 
-void startEngine(JNIEnv *env, jobject obj){
-    audioEngine->start();
+void stopEngine(JNIEnv *env, jobject instance){
+    audioEngine.stop();
 }
 
-void stopEngine(JNIEnv *env, jobject obj){
-    audioEngine->stop();
+void setRecording(JNIEnv *env, jobject instance, jboolean isRecording){
+    __android_log_print(ANDROID_LOG_DEBUG, "oboe-kit", "Recording? %d", isRecording);
+    audioEngine.setRecording(isRecording);
+}
+
+void setPlaying(JNIEnv *env, jobject instance, jboolean isPlaying){
+    __android_log_print(ANDROID_LOG_DEBUG, "oboe-kit", "Playing? %d", isPlaying);
+    audioEngine.setPlaying(isPlaying);
+}
+
+void setLooping(JNIEnv *env, jobject instance, jboolean isOn){
+    audioEngine.setLooping(isOn);
 }
 
 //方法数组，正是这个，可以动态调用任意 native 方法
 JNINativeMethod nativeMethods[] = {
         {"getOboeName", "()Ljava/lang/String;", (void *) getOboeName},
-        {"touchEvent", "(I)V", (void *) touchEvent},
         {"startEngine", "()V", (void *) startEngine},
-        {"stopEngine", "()V", (void *) stopEngine}
+        {"stopEngine", "()V", (void *) stopEngine},
+        {"setRecording", "(Z)V", (void *) setRecording},
+        {"setPlaying", "(Z)V", (void *) setPlaying},
+        {"setLooping", "(Z)V", (void *) setLooping}
 };
 
 /********* 重写JNI_OnLoad方法,在loadLibrary("native-lib")动态注册FFmpegKit中的方法 ***********/

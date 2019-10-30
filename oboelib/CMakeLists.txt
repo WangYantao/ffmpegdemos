@@ -5,6 +5,8 @@ add_library(oboe-kit
             src/main/cpp/OboeKit.cpp
             src/main/cpp/Oscillator.cpp
             src/main/cpp/AudioEngine.cpp
+            src/main/cpp/SoundRecording.cpp
+            src/main/cpp/SoundRecordingUtilities.cpp
         )
 
 
