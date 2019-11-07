@@ -1,10 +1,11 @@
 package com.demo.ffmpeglib;
 
+import android.view.Surface;
+
 /**
  * Created by wangyt on 2019/10/24
  */
 public class FFmpegKit {
-
     static {
         System.loadLibrary("ffmpeg-kit");
         System.loadLibrary("avutil");
@@ -17,4 +18,6 @@ public class FFmpegKit {
     }
 
     public native String getFFmpegName();
+
+    public native void playVideo(String path, Surface surface);
 }

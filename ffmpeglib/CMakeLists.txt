@@ -279,6 +279,9 @@ include_directories(src/main/cpp/include/)
 find_library(log-lib
             log)
 
+find_library(android-lib
+            android)
+
 target_link_libraries(ffmpeg-kit
                       fdk-aac
                       avcodec
@@ -287,4 +290,5 @@ target_link_libraries(ffmpeg-kit
                       avutil
                       swresample
                       swscale
+                    ${android-lib}
                     ${log-lib})

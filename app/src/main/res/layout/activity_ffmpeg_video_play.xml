@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".FFmpegVideoPlayActivity">
 
     <Button
-        android:id="@+id/btnOboe"
+        android:id="@+id/btnPlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="oboe录音/播放"/>
+        android:text="播放视频"/>
 
-    <Button
-        android:id="@+id/btnFFmpegPlayVideo"
+    <SurfaceView
+        android:id="@+id/sfvVideo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ffmpeg 播放视频"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"/>
 </LinearLayout>
